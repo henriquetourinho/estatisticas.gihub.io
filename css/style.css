@@ -1,0 +1,41 @@
+/* Define a fonte Inter como padrão para uma melhor legibilidade */
+body {
+    font-family: 'Inter', sans-serif;
+}
+/* Estilos adicionais para centralizar o conteúdo e garantir a altura mínima */
+.min-h-screen {
+    min-height: 100vh;
+}
+/* Ajuste para o spinner de carregamento */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+/* Estilo para o item de linguagem com a bolinha colorida */
+.language-item-list {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem; /* Aumentado o espaçamento */
+    flex-grow: 1;
+    min-width: 160px; /* Levemente aumentado para clareza */
+    padding-right: 1rem; /* Espaçamento à direita para evitar quebra de linha em flex-wrap */
+}
+.language-color-dot {
+    width: 14px; /* Levemente maior */
+    height: 14px; /* Levemente maior */
+    border-radius: 50%; /* Faz a bolinha ser redonda */
+    margin-right: 10px; /* Aumentado o espaçamento */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* Sombra suave */
+    border: 1px solid rgba(0,0,0,0.05); /* Borda muito sutil */
+}
+/* Estilo para o container das linguagens para dispor em colunas */
+.language-list-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 450px; /* Aumentado para acomodar 2-3 colunas em telas maiores */
+    margin: 0 auto;
+}
