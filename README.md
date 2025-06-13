@@ -1,5 +1,5 @@
 
-# 📊 Estatísticas
+# 📊 Estatísticas GitHub – Visualizador Moderno 🇧🇷✨
 
 **Estatísticas GitHub** é uma aplicação web leve, responsiva e totalmente gratuita que **gera e exibe estatísticas públicas** de qualquer usuário do GitHub em tempo real. Com uma interface moderna e intuitiva feita com Tailwind CSS, esse projeto é ideal para quem quer apresentar seus dados de forma elegante — seja num portfólio, currículo ou painel.
 
@@ -52,7 +52,7 @@ cd estatisticas.github.io
 
 ## 📸 Captura de Tela
 
-![preview](https://placehold.co/800x400/cccccc/000000?text=Preview+do+Sistema)
+![preview](https://github.com/henriquetourinho/estatisticas/blob/main/media/print.png)
 
 ---
 
