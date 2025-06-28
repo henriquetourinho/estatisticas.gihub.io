@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerador de Estatísticas do GitHub</title>
-    <!-- Inclui o Tailwind CSS para estilização -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Inclui o arquivo CSS personalizado -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="bg-gray-50 font-sans antialiased text-gray-800">
@@ -16,27 +15,21 @@
         <h1 class="text-3xl md:text-4xl font-extrabold text-gray-800 mb-8 text-center tracking-tight">Gerador de Estatísticas do GitHub</h1>
 
         <div class="mb-8 flex flex-col sm:flex-row items-center justify-center space-y-5 sm:space-y-0 sm:space-x-5">
-            <!-- Campo de entrada para o nome de usuário do GitHub -->
             <input type="text" id="usernameInput" placeholder="Nome de usuário do GitHub"
                    class="flex-grow p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-3 focus:ring-blue-400 focus:border-transparent transition duration-300 ease-in-out text-lg placeholder-gray-500 w-full sm:w-auto shadow-sm">
-            <!-- Botão para gerar as estatísticas -->
             <button id="generateButton"
                     class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-0.5 w-full sm:w-auto text-lg">
                 Gerar Estatísticas
             </button>
         </div>
 
-        <!-- Caixa de mensagem para erros ou informações -->
         <div id="messageBox" class="text-center text-red-600 font-semibold mb-4 hidden py-2 px-4 bg-red-50 rounded-md"></div>
-        <!-- Spinner de carregamento -->
         <div id="loadingSpinner" class="flex justify-center items-center mb-8 hidden">
             <div class="animate-spin rounded-full h-14 w-14 border-t-4 border-b-4 border-blue-500"></div>
             <span class="ml-4 text-xl text-gray-700">Carregando dados do GitHub...</span>
         </div>
 
-        <!-- Container para exibir as estatísticas (inicialmente oculto) -->
         <div id="statsContainer" class="hidden">
-            <!-- Seção de informações do perfil -->
             <div class="flex flex-col items-center mb-10">
                 <img id="avatar" class="w-40 h-40 rounded-full border-6 border-blue-500 shadow-xl mb-5 object-cover"
                      src="https://placehold.co/160x160/cccccc/ffffff?text=Avatar" alt="Avatar do GitHub">
@@ -46,7 +39,6 @@
                 <a id="profileLink" href="#" target="_blank" class="text-blue-500 hover:text-blue-700 mt-3 text-base underline">Ver Perfil no GitHub</a>
             </div>
 
-            <!-- Grid de estatísticas principais -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center mb-10">
                 <div class="bg-blue-50 p-6 rounded-lg shadow-md flex flex-col items-center justify-center">
                     <p class="text-gray-600 text-base font-medium">Seguidores</p>
@@ -66,37 +58,38 @@
                 </div>
             </div>
 
-            <!-- Grid de estatísticas adicionais (estrelas e linguagens) -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-center mb-10">
                 <div class="bg-green-50 p-6 rounded-lg shadow-md flex flex-col items-center justify-center">
                     <p class="text-gray-600 text-base font-medium">Estrelas Totais Recebidas</p>
                     <p id="totalStars" class="text-4xl font-extrabold text-green-800 mt-2"></p>
                 </div>
-                <!-- Seção das linguagens mais usadas (agora como lista com porcentagens) -->
                 <div class="bg-purple-50 p-6 rounded-lg shadow-md">
                     <h4 class="text-xl font-semibold text-gray-700 mb-6">Linguagens Mais Usadas</h4>
-                    <div id="languageListDisplay" class="language-list-container">
-                        <!-- As linguagens e porcentagens serão injetadas aqui dinamicamente -->
+                    <div class="relative mx-auto" style="max-width: 350px; max-height: 350px;">
+                         <canvas id="languageChart"></canvas>
                     </div>
                     <p id="noLanguageMessage" class="text-gray-600 text-base mt-4 hidden">Nenhuma linguagem encontrada em repositórios públicos.</p>
                 </div>
             </div>
 
-            <!-- Aviso sobre limites de taxa da API -->
+            <div class="bg-gray-50 p-6 rounded-lg shadow-md mt-6">
+                <h4 class="text-xl font-semibold text-gray-700 mb-6 text-center">Repositórios Mais Populares</h4>
+                <div id="popularReposList" class="space-y-4">
+                    <p id="noPublicReposMessage" class="text-gray-600 text-base mt-4 text-center hidden">Nenhum repositório público encontrado.</p>
+                </div>
+            </div>
+
             <div class="text-sm text-gray-500 mt-8 text-center leading-relaxed">
-                <p>Nota: Para evitar limites de taxa da API do GitHub, este aplicativo não usa autenticação. Para um uso mais intensivo, considere a autenticação com um Personal Access Token.</p>
-                <p>Nenhuma credencial é solicitada ou armazenada.</p>
+                <p>Nota: Os dados são armazenados em cache por 30 minutos para melhorar o desempenho e evitar limites da API do GitHub. Nenhuma credencial é solicitada ou armazenada.</p>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Rodapé com créditos -->
 <footer class="bg-gray-200 text-gray-700 text-center py-4 text-sm mt-8 shadow-inner">
     <p>Feito com ❤️ por <a href="https://github.com/henriquetourinho" target="_blank" class="text-blue-600 hover:underline">Carlos Henrique Tourinho Santana</a></p>
 </footer>
 
-<!-- Inclui o arquivo JavaScript personalizado -->
 <script src="js/script.js"></script>
 
 </body>
